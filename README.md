@@ -1,2 +1,2 @@
-# Mygraduation
-remote  terninal control
+# 我的毕业设计   基于C\S架构的远程终端控制系统
+
