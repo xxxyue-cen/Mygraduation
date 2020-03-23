@@ -1,0 +1,168 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	makefile	/^CC:=gcc$/;"	m
+CHO	client.c	26;"	d	file:
+CHO	server.c	33;"	d	file:
+CHO_FAIL	client.c	28;"	d	file:
+CHO_FAIL	server.c	35;"	d	file:
+CHO_OK	client.c	27;"	d	file:
+CHO_OK	server.c	34;"	d	file:
+CPPFLAGS	makefile	/^CPPFLAGS:=-g   $/;"	m
+ENDL	client.c	50;"	d	file:
+ENDL	server.c	15;"	d	file:
+EXIT	client.c	56;"	d	file:
+EXIT	server.c	38;"	d	file:
+EXIT_FAIL	client.c	58;"	d	file:
+EXIT_FAIL	server.c	40;"	d	file:
+EXIT_OK	client.c	57;"	d	file:
+EXIT_OK	server.c	39;"	d	file:
+HEAD	client.c	30;"	d	file:
+HEAD	server.c	36;"	d	file:
+IP	server.c	62;"	d	file:
+LOG	client.c	52;"	d	file:
+LOG	server.c	29;"	d	file:
+LOG_FAIL	client.c	54;"	d	file:
+LOG_FAIL	server.c	31;"	d	file:
+LOG_OK	client.c	53;"	d	file:
+LOG_OK	server.c	30;"	d	file:
+MENU	client.c	12;"	d	file:
+MENU2	client.c	20;"	d	file:
+PAGER	file.sql	/^                      option, the default pager is taken from your ENV variable$/;"	v
+RECORD	client.c	70;"	d	file:
+RECORD	server.c	51;"	d	file:
+RECORD_BUFF	client.c	75;"	d	file:
+RECORD_BUFF	server.c	56;"	d	file:
+RECORD_END	client.c	76;"	d	file:
+RECORD_END	server.c	57;"	d	file:
+RECORD_FAIL	client.c	72;"	d	file:
+RECORD_FAIL	server.c	53;"	d	file:
+RECORD_NAME	client.c	73;"	d	file:
+RECORD_NAME	server.c	54;"	d	file:
+RECORD_OK	client.c	71;"	d	file:
+RECORD_OK	server.c	52;"	d	file:
+RECORD_ROW	client.c	74;"	d	file:
+RECORD_ROW	server.c	55;"	d	file:
+REC_FILE	client.c	46;"	d	file:
+REC_FILE	server.c	27;"	d	file:
+REC_O	client.c	42;"	d	file:
+REC_O	server.c	24;"	d	file:
+REC_O_FAIL	client.c	44;"	d	file:
+REC_O_FAIL	server.c	26;"	d	file:
+REC_O_OK	client.c	43;"	d	file:
+REC_O_OK	server.c	25;"	d	file:
+RED	client.c	49;"	d	file:
+RED	server.c	14;"	d	file:
+REG	client.c	33;"	d	file:
+REG	server.c	16;"	d	file:
+REG_FAIL	client.c	35;"	d	file:
+REG_FAIL	server.c	18;"	d	file:
+REG_OK	client.c	34;"	d	file:
+REG_OK	server.c	17;"	d	file:
+SEND	client.c	48;"	d	file:
+SEND	server.c	13;"	d	file:
+SEND_FILE	client.c	40;"	d	file:
+SEND_FILE	server.c	22;"	d	file:
+SEND_O	client.c	37;"	d	file:
+SEND_O	server.c	19;"	d	file:
+SEND_O_FAIL	client.c	39;"	d	file:
+SEND_O_FAIL	server.c	21;"	d	file:
+SEND_O_OK	client.c	38;"	d	file:
+SEND_O_OK	server.c	20;"	d	file:
+SHOW	client.c	61;"	d	file:
+SHOW	server.c	42;"	d	file:
+SHOW_BUFF	client.c	66;"	d	file:
+SHOW_BUFF	server.c	47;"	d	file:
+SHOW_END	client.c	67;"	d	file:
+SHOW_END	server.c	48;"	d	file:
+SHOW_FAIL	client.c	63;"	d	file:
+SHOW_FAIL	server.c	44;"	d	file:
+SHOW_NAME	client.c	64;"	d	file:
+SHOW_NAME	server.c	45;"	d	file:
+SHOW_OK	client.c	62;"	d	file:
+SHOW_OK	server.c	43;"	d	file:
+SHOW_ROW	client.c	65;"	d	file:
+SHOW_ROW	server.c	46;"	d	file:
+buff	client.c	/^	char buff[1024];$/;"	m	struct:buff_msg	file:
+buff	server.c	/^	char buff[1024];$/;"	m	struct:buff_msg	file:
+buff_msg	client.c	/^struct buff_msg$/;"	s	file:
+buff_msg	server.c	/^struct buff_msg$/;"	s	file:
+cfd	client.c	/^	int cfd;$/;"	m	struct:cli_info	file:
+cfd	server.c	/^	int cfd;$/;"	m	struct:cli_info	file:
+choose	client.c	/^int choose(int sockfd)$/;"	f
+cli_info	client.c	/^struct cli_info$/;"	s	file:
+cli_info	server.c	/^struct cli_info$/;"	s	file:
+close_file	server.c	/^int close_file(struct cli_info  *head,int cfd)$/;"	f
+data	client.c	/^	char data[0];$/;"	m	struct:pack	file:
+data	server.c	/^	char data[0];$/;"	m	struct:pack	file:
+del_link	server.c	/^int del_link(struct cli_info **head,int temp)$/;"	f
+exit_msg	client.c	/^int exit_msg(int sockfd)$/;"	f
+exit_ok	server.c	/^int exit_ok(int cfd,struct pack  pa,struct cli_info  **head)$/;"	f
+fields	client.c	/^	int fields;$/;"	m	struct:mysql_msg	file:
+fields	server.c	/^	int fields;$/;"	m	struct:mysql_msg	file:
+getpasswd	client.c	/^int getpasswd(char *passwd, int size)$/;"	f
+ip	client.c	/^	char ip[64];$/;"	m	struct:cli_info	file:
+ip	server.c	/^	char ip[64];$/;"	m	struct:cli_info	file:
+lenth	client.c	/^	int lenth;$/;"	m	struct:buff_msg	file:
+lenth	client.c	/^	int lenth;$/;"	m	struct:pack	file:
+lenth	server.c	/^	int lenth;$/;"	m	struct:buff_msg	file:
+lenth	server.c	/^	int lenth;$/;"	m	struct:pack	file:
+log_in	client.c	/^int  log_in(int sockfd)$/;"	f
+log_ok	server.c	/^int log_ok(struct cli_info **head,int cfd,struct pack pa)$/;"	f
+main	client.c	/^int main()$/;"	f
+main	server.c	/^int main()$/;"	f
+menu	client.c	/^int menu(int sockfd)$/;"	f
+menu2	client.c	/^int menu2(int sockfd)$/;"	f
+message	server.c	/^struct  message$/;"	s	file:
+msg	client.c	/^struct msg$/;"	s	file:
+mygetch	client.c	/^int mygetch()$/;"	f
+mysql	server.c	/^MYSQL mysql;$/;"	v
+mysql_exit	server.c	/^int mysql_exit(int cfd,struct pack pa,struct cli_info **head)$/;"	f
+mysql_msg	client.c	/^struct mysql_msg$/;"	s	file:
+mysql_msg	server.c	/^struct mysql_msg$/;"	s	file:
+mysql_read	server.c	/^int mysql_read(struct cli_info **head,int cfd,struct pack pa)\/\/连接的链表   cfd   客户端传的数据(二次解包)$/;"	f
+mysql_record	server.c	/^int mysql_record(int cfd,char buff[64],struct cli_info *head)$/;"	f
+mysql_write	server.c	/^int mysql_write(int cfd,struct pack pa)$/;"	f
+name	client.c	/^	char name[32];$/;"	m	struct:msg	file:
+name	server.c	/^	char name[32];$/;"	m	struct:message	file:
+name	server.c	/^int name(struct cli_info **head,struct pack p,int cfd)$/;"	f
+next	client.c	/^	struct cli_info *next;$/;"	m	struct:cli_info	typeref:struct:cli_info::cli_info	file:
+next	server.c	/^	struct cli_info *next;$/;"	m	struct:cli_info	typeref:struct:cli_info::cli_info	file:
+num	client.c	/^	int   num;$/;"	m	struct:cli_info	file:
+num	client.c	/^	int num;$/;"	m	struct:msg	file:
+num	server.c	/^	int   num;$/;"	m	struct:cli_info	file:
+num	server.c	/^	int  num;$/;"	m	struct:message	file:
+open_file	server.c	/^int open_file(struct cli_info  *q)$/;"	f
+order	client.c	/^int order(int sockfd)$/;"	f
+order	server.c	/^int order(struct cli_info *head,struct pack p,int cfd)$/;"	f
+pack	client.c	/^struct pack $/;"	s	file:
+pack	server.c	/^struct pack$/;"	s	file:
+passwd	client.c	/^	char passwd[32];	$/;"	m	struct:cli_info	file:
+passwd	client.c	/^	char passwd[32];$/;"	m	struct:msg	file:
+passwd	server.c	/^	char passwd[32];	$/;"	m	struct:cli_info	file:
+passwd	server.c	/^	char passwd[32];$/;"	m	struct:message	file:
+port	client.c	/^	int port;$/;"	m	struct:cli_info	file:
+port	server.c	/^	int port;$/;"	m	struct:cli_info	file:
+rec_link	client.c	/^void rec_link(int cfd)$/;"	f
+rec_o	server.c	/^int rec_o(struct cli_info *head,int cfd,struct pack p)$/;"	f
+rec_order	client.c	/^int rec_order(int sockfd)$/;"	f
+record_mysql	client.c	/^int record_mysql(int sockfd)$/;"	f
+record_mysql	server.c	/^int record_mysql(int cfd,struct pack p)$/;"	f
+reg_ok	server.c	/^int reg_ok(int cfd,struct pack  pa)$/;"	f
+row	client.c	/^	int row;$/;"	m	struct:mysql_msg	file:
+row	server.c	/^	int row;$/;"	m	struct:mysql_msg	file:
+send_link	server.c	/^int send_link(struct cli_info *head,int cfd)$/;"	f
+send_o	server.c	/^int send_o(struct cli_info *head, int cfd,struct pack p)$/;"	f
+send_order	client.c	/^int send_order(int sockfd)$/;"	f
+show	server.c	/^int show(struct cli_info  *phead)$/;"	f
+show_cli	client.c	/^int show_cli(int sockfd,struct pack pa)$/;"	f
+show_mysql	client.c	/^int show_mysql(int sockfd)$/;"	f
+show_mysql	server.c	/^int show_mysql(int cfd,struct pack p)$/;"	f
+socket_init	client.c	/^int socket_init()$/;"	f
+socket_init	server.c	/^int socket_init()$/;"	f
+type	client.c	/^	int  type;$/;"	m	struct:pack	file:
+type	server.c	/^	int type;$/;"	m	struct:pack	file:
+write_msg	client.c	/^int write_msg(int sockfd)$/;"	f
