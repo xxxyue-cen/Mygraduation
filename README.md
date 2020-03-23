@@ -1,0 +1,2 @@
+# Mygraduation
+remote  terninal control
