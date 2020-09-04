@@ -1,4 +1,4 @@
-# 我的毕业设计（后期持续更新）  
+# [我的毕业设计](https://github.com/xxxyue-cen/Mygraduation)（后期持续更新）  
 作者： 陈悦  
 QQ: 1724698321
 ## 基于C\S架构的远程终端控制系统
