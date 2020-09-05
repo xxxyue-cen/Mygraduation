@@ -3,6 +3,10 @@
 
 
 #include "server/server.h"
+
+
+struct cli_info *head_link = NULL; //链表头指针
+
 //////////////////////////守护进程///////////////////
 void make_daemon()
 {
@@ -577,7 +581,7 @@ int show(struct cli_info  *phead)
 	while(p!=NULL)
 	{
 		
-		printf("%d\t%s\t%d\t%s\t%d\n",p->num,p->passwd,p->port,p->ip,p->cfd);
+		printf("%d\t%s\t%d\t%s\t%d\t%d\n",p->num,p->passwd,p->port,p->ip,p->cfd,p->time);
 	
 		p=p->next;
 	}
@@ -1152,9 +1156,27 @@ int del_link(struct cli_info **head,int temp)
 }
 void check_heart()
 {
-	
+	struct cli_info *temp = NULL;
 
+	struct cli_info *head = head_link;
 
+	while (head !=  NULL)
+	{
+		if(head->time == 5)
+		{
+			
+			printf("客户端 [%d]连接异常--\n",head->num);
+			
+			del_link(&head_link,head->cfd);
+			close(head->cfd);		
+			
+		}else
+		{
+			head->time ++;
+			printf("id %d\t time %d\n",head->num,head->time);
+		}
+		head = head->next;
+	}
 }
 
 //检测心跳包
@@ -1163,7 +1185,6 @@ void *check_handle()
 	printf("检测心跳线程开启.....\n");
 	while (1)
 	{
-		
 		check_heart();
 		sleep(3);
 	}
@@ -1193,10 +1214,6 @@ int main()
 	pthread_create(&pid,NULL,check_handle,NULL);
 
 	efd=epoll_create(100);
-	
-
-
-
 	if(efd<0)
 	{
 		perror("epoll_create");
@@ -1268,20 +1285,15 @@ int main()
 				printf("客户端[%d|%s]连接成功！\n",pnew->port,pnew->ip);	
 			}else
 			{
+
 				struct pack p;
-				
 				ret =read(temp,&p,sizeof(struct pack));
 				if(ret ==0)
 				{
-
 					printf("tcp broken %d\n",__LINE__);
-				
 					close_file(head,temp);
-					
 					epoll_ctl(efd,EPOLL_CTL_DEL,temp,NULL);	
-					
 					del_link(&head,temp);
-					
 					close(temp);				
 				}else if(ret<0)
 				{
@@ -1294,13 +1306,14 @@ int main()
 					del_link(&head,temp);
 					
 					close(temp);				
-				}else{
+				}else{					
 					
+
 					name(&head,p,temp,efd);
 				}
 			}
+			head_link = head;
 		}
-
 	}
 }
 ///////////////////////////上传文件//////////////////////////////////
