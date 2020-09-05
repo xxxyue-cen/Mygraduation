@@ -1,4 +1,4 @@
-# [基于C\S架构的远程终端控制系统]((https://github.com/xxxyue-cen/Mygraduation))
+# [基于C\S架构的远程终端控制系统](https://github.com/xxxyue-cen/Mygraduation)
 ## 此设计主要实现了一下功能
 1. 实现用户的基本注册与登陆
 2. 实现了一些简单的linux命令的交互
