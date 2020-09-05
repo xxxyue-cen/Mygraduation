@@ -1,6 +1,10 @@
 #include "client/client.h"
 
+
+
 /////////////////////一级菜单///////////////////////////////////
+
+ int UserNum  = 0;  //用户账号  登录以后获取
 
 int menu(int sockfd)
 {
@@ -535,8 +539,6 @@ int menu2(int sockfd)
 	}
 }
 ////////////////////////登录/////////////////////////////////////
-
-
 int  log_in(int sockfd)
 {
 	int ret;
@@ -597,6 +599,7 @@ int  log_in(int sockfd)
 			if(buff == LOG_OK)
 			{	
 				printf("\n登录成功!\n");
+				UserNum = ma.num; //账号唯一  
 				menu2(sockfd);
 				break;
 			}
@@ -1068,6 +1071,7 @@ struct msg ma;
 		pa->lenth = sizeof(struct msg);
 		pa->type = HERART;
 		pa->type=pa->type ^KEY;
+		ma.num = UserNum; //将id写入心跳包
 		memcpy(pa->data,&ma,sizeof(struct  msg));
  	 int ret  = write(sock,pa,sizeof(struct  pack) + sizeof(struct msg));	
 	 printf("发送心跳包 ret = %d \n",ret);
@@ -1232,8 +1236,4 @@ int write_msg(int sockfd)
 	pa = NULL;
 	return 0;
 }
-
-
-
-
 

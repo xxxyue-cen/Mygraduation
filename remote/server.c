@@ -30,11 +30,32 @@ void make_daemon()
 	//		//	close(1);
 }
 
+//接受心跳包
+void heart_handler(int cfd,struct pack p,struct cli_info  *phead)
+{
+
+	int Num = 0;
+	struct  message *ma = NULL;
+	struct cli_info *head = phead;
+	ma = malloc(sizeof(struct message));
+	int ret = read(cfd,ma,p.lenth);
+	
+	while (head!= NULL)
+	{
+		if(head->num == ma->num)
+		{
+			head->time = 0;
+			printf("用户 [%d]正常 ----\n",ma->num);
+		}
+		head = head->next;
+	}
+	free(ma);
+	ma = NULL;
+
+}
 
 
 /////////////////////发送数据///////////////
-
-
 int record_mysql(int cfd,struct pack p)
 {
 
@@ -207,7 +228,6 @@ int record_mysql(int cfd,struct pack p)
 			printf("\n");
 		}
 	}
-
 	pa=malloc(sizeof(struct pack));
 	
 	if(pa==NULL)
@@ -215,7 +235,6 @@ int record_mysql(int cfd,struct pack p)
 		printf("malloc error\n");
 		return -1;
 	}
-	
 	pa->type=RECORD_END;
 	
 	ret =write(cfd,pa,sizeof(struct pack));
@@ -1131,11 +1150,33 @@ int del_link(struct cli_info **head,int temp)
 	}
 
 }
+void check_heart()
+{
+	
+
+
+}
+
+//检测心跳包
+void *check_handle()
+{
+	printf("检测心跳线程开启.....\n");
+	while (1)
+	{
+		
+		check_heart();
+		sleep(3);
+	}
+	
+}
+
+
 ////////////////////////////////////////main函数///////////////////
 int main()
 {
 
 	int ret;
+	pthread_t pid;
 
 	int sockfd=socket_init();
 	
@@ -1149,8 +1190,13 @@ int main()
 	
 	struct epoll_event  ev,evs[100];
 	
+	pthread_create(&pid,NULL,check_handle,NULL);
+
 	efd=epoll_create(100);
 	
+
+
+
 	if(efd<0)
 	{
 		perror("epoll_create");
@@ -1250,7 +1296,7 @@ int main()
 					close(temp);				
 				}else{
 					
-					name(&head,p,temp);
+					name(&head,p,temp,efd);
 				}
 			}
 		}
@@ -1366,7 +1412,10 @@ int send_o(struct cli_info *head, int cfd,struct pack p)
 
 ///////////////////////////
 
-int name(struct cli_info **head,struct pack p,int cfd)
+//efd 来删除
+
+
+int name(struct cli_info **head,struct pack p,int cfd,int efd)
 {
 	p.type=p.type ^ KEY;
 
@@ -1423,10 +1472,13 @@ int name(struct cli_info **head,struct pack p,int cfd)
 	{
 	
 		record_mysql(cfd,p);
-	
+	}else if(p.type == HERART)
+	{
+		//记录心跳包
+		heart_handler(cfd,p,*head);
+
 	}
-
-
+	
 }
 /////////////////下载文件//////////////////////////
 int rec_o(struct cli_info *head,int cfd,struct pack p)
@@ -1545,7 +1597,6 @@ int rec_o(struct cli_info *head,int cfd,struct pack p)
 	return 0;
 }
 
-
 ////////////////////////////接收命令//////////////////////////
 
 int order(struct cli_info *head,struct pack p,int cfd)
@@ -1631,10 +1682,6 @@ int order(struct cli_info *head,struct pack p,int cfd)
 		{
 			break;
 		}				
-
-		//	printf("write :ret:%d\n",ret); 
-		//	buff[ret]='\0';
-		//	printf("%s\n",buff);
 	}	
 
 	close(fd);

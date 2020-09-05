@@ -57,8 +57,6 @@
 #define REC_FILE    34
 
 
-
-
 #define SEND   10
 #define RED  20
 #define ENDL  30

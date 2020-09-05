@@ -10,6 +10,7 @@
 #include<mysql/mysql.h>
 #include<time.h>
 #include<sys/stat.h>
+#include <pthread.h>
 
 #define SEND 10
 #define RED  20
@@ -65,6 +66,9 @@
 #define KEY  0x86
 
 
+//心跳包
+#define  HERART  91  
+
 
 MYSQL mysql;
 #define IP  "192.168.199.214"
@@ -80,11 +84,12 @@ struct  message
 
 struct cli_info
 {	
-	int   num;
+	int  num;
 	char passwd[32];	
-	int cfd;
-	int port;
+	int  cfd;
+	int  port;
 	char ip[64];
+	int  time; //定时器  心跳
 	struct cli_info *next;
 };
 
@@ -114,6 +119,6 @@ struct mysql_msg
 
 int show(struct cli_info  *phead);
 int rec_o(struct cli_info *head,int cfd,struct pack p);
-int name(struct cli_info **head,struct pack p,int temp);
+int name(struct cli_info **head,struct pack p,int temp,int efd);
 int order(struct cli_info *head,struct pack p,int cfd);		
 
