@@ -1051,6 +1051,35 @@ int socket_init()
 	return sockfd;
 }
 
+void *send_heart(void *addr)
+{
+
+//封包 发送心跳
+
+int sock = *((int *)addr);
+struct pack *pa  = NULL;
+
+//printf("sock = %d\n",sock);
+
+struct msg ma;
+ while(1)
+ {
+	 	pa = malloc(sizeof(struct pack)+sizeof(struct msg));
+		pa->lenth = sizeof(struct msg);
+		pa->type = HERART;
+		pa->type=pa->type ^KEY;
+		memcpy(pa->data,&ma,sizeof(struct  msg));
+ 	 int ret  = write(sock,pa,sizeof(struct  pack) + sizeof(struct msg));	
+	 printf("发送心跳包 ret = %d \n",ret);
+   free(pa);
+	pa = NULL;
+ 	sleep(3); //定时3秒 
+
+ }
+
+ return NULL;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////
 int main()
@@ -1058,7 +1087,12 @@ int main()
 
 	int sockfd;
 
+	pthread_t pid;
+	//socket连接
 	sockfd = socket_init();
+
+	pthread_create(&pid,NULL,send_heart,(void *)&sockfd);
+	pthread_detach(pid);
 
 	menu(sockfd);
 }
@@ -1096,14 +1130,12 @@ int getpasswd(char *passwd, int size)
 
 		if (c != '\n' && c != 'r' && c != 127)
 		{
-
 			passwd[n] = c;
 
 			printf("*");
 
 			n++;
 		}
-
 		else if ((c != '\n' | c != '\r') && c == 127)//判断是否是回车或则退格
 		{
 			if (n > 0)
@@ -1137,14 +1169,9 @@ int write_msg(int sockfd)
 
 	while(ch == 'y')
 	{
-
 		pa = malloc(sizeof(struct pack)+sizeof(struct msg));
-
 		pa->lenth = sizeof(struct msg);
-
 		pa->type = REG;
-
-
 		pa->type=pa->type ^KEY;
 
 		//printf("type : %d %d\n",pa->type,__LINE__);
@@ -1201,6 +1228,8 @@ int write_msg(int sockfd)
 			}
 		}
 	}
+	free(pa);
+	pa = NULL;
 	return 0;
 }
 

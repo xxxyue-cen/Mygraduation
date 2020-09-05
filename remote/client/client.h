@@ -1,12 +1,13 @@
-#include<string.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<sys/socket.h>
-#include<arpa/inet.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<errno.h>
-#include<termios.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <termios.h>
+#include <pthread.h>
 
 
 #define  MENU   "\t\t\t***********1.注册**********\n"\
@@ -89,6 +90,10 @@
 #define  RECORD_ROW   85
 #define  RECORD_BUFF  86
 #define  RECORD_END   87
+
+
+//心跳包
+#define  HERART  91  
 
 
 

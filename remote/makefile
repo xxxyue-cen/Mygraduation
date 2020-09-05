@@ -1,6 +1,6 @@
 all:ser    cli
 CC:=gcc
-CPPFLAGS:=-g   
+CPPFLAGS:=-g    -pthread
 ser:ser.o
 	$(CC)  $(CPPFLAGS) ser.o     -o  ./server/ser    -lmysqlclient 
 	$(CC)  $(CPPFLAGS) ser.o     -o  ser    -lmysqlclient

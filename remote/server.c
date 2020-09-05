@@ -1265,8 +1265,8 @@ int send_o(struct cli_info *head, int cfd,struct pack p)
 	
 	char buff[1024];
 	
-	char buff1[1024];
-	
+  char buff1[1024];
+
 	int fd_write;
 	
 	int length;
