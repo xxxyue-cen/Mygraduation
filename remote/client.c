@@ -1074,7 +1074,7 @@ struct msg ma;
 		ma.num = UserNum; //将id写入心跳包
 		memcpy(pa->data,&ma,sizeof(struct  msg));
  	 int ret  = write(sock,pa,sizeof(struct  pack) + sizeof(struct msg));	
-	 printf("发送心跳包 ret = %d \n",ret);
+	 //printf("发送心跳包 ret = %d \n",ret);
    free(pa);
 	pa = NULL;
  	sleep(3); //定时3秒 
