@@ -11,10 +11,10 @@ class thread_heart : public QObject
 public:
     explicit thread_heart(QObject *parent = nullptr);
 
-    void send_hread(QTcpSocket *sock);
+    void send_hread();
 
 signals:
-
+void  heart_send_signal();
 
 
 public slots:

@@ -22,9 +22,13 @@ public:
 private slots:
     void on_pushButton_connect_clicked();
 
+    void SendHeartPack();
 //    void on_pushButton_send_clicked();
 
 //    void on_pushButton_close_clicked();
+
+signals:
+    void StartThread();
 
 private:
 

@@ -3,7 +3,7 @@
 
 #include <QMessageBox>
 #include <QHostAddress>
-
+extern int UserNum;
 extern int Width_Pos;
 extern int Height_Pos;
 QTcpSocket *tcpSocket;
@@ -24,12 +24,15 @@ ClientWidget::ClientWidget(QWidget *parent) :
     tcpSocket = NULL;
     tcpSocket = new QTcpSocket(this);
     setWindowTitle("客户端");
+    connect(this,&ClientWidget::StartThread,heart_thread,&thread_heart::send_hread);
+
+
+    connect(heart_thread,&thread_heart::heart_send_signal,this,&ClientWidget::SendHeartPack);
     connect(tcpSocket,&QTcpSocket::connected,[=]()
     {
         //ui->textEdit_read->setText("连接成功");
         thread->start();
-
-        heart_thread->send_hread(tcpSocket);
+        emit StartThread();
         mainMenu->show();
     });
 
@@ -88,6 +91,31 @@ void ClientWidget::on_pushButton_connect_clicked()
     //    int j = this->height();
     //    QString str = QString("i: %1 j: %2").arg(i).arg(j);
     //    QMessageBox::about(0,"about",str);
+
+}
+
+void ClientWidget::SendHeartPack()
+{
+    //封包 发送心跳
+
+    struct pack *pa  = NULL;
+
+    //printf("sock = %d\n",sock);
+
+    struct msg ma;
+//    while(1)
+//     {
+            pa = (struct pack *)malloc(sizeof(struct pack)+sizeof(struct msg));
+            pa->lenth = sizeof(struct msg);
+            pa->type = HERART;
+            pa->type=pa->type ^KEY;
+            ma.num = UserNum; //将id写入心跳包
+            memcpy(pa->data,&ma,sizeof(struct  msg));
+         int ret  = tcpSocket->write((char *)pa,sizeof(struct  pack) + sizeof(struct msg));
+         //printf("发送心跳包 ret = %d \n",ret);
+        free(pa);
+        pa = NULL;
+
 
 }
 
