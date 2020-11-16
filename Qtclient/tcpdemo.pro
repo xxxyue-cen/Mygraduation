@@ -30,7 +30,8 @@ SOURCES += \
     MainMenu.cpp \
     RegDlg.cpp \
     LogDlg.cpp \
-    SubMenu.cpp
+    SubMenu.cpp \
+    thread_heart.cpp
 
 
 HEADERS += \
@@ -39,7 +40,8 @@ HEADERS += \
     RegDlg.h \
     client.h \
     LogDlg.h \
-    SubMenu.h
+    SubMenu.h \
+    thread_heart.h
 
 
 FORMS += \

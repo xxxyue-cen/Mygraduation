@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QTcpSocket>
+#include <QThread>
+#include <thread_heart.h>
 #include "SubMenu.h"
 #include "MainMenu.h"
 namespace Ui {
@@ -25,6 +27,9 @@ private slots:
 //    void on_pushButton_close_clicked();
 
 private:
+
+    thread_heart *heart_thread; //发送心跳的线程
+    QThread *thread;
     SubMenu *subMenu;
     MainMenu *mainMenu;
     Ui::ClientWidget *ui;

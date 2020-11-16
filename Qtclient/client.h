@@ -80,6 +80,9 @@
 
 
 
+//心跳包
+#define  HERART  91
+
 struct cli_info
 {	
 	int   num;

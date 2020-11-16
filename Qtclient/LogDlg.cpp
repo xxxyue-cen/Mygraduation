@@ -2,7 +2,9 @@
 #include "LogDlg.h"
 #include "ui_LogDlg.h"
 #include "client.h"
+
 extern QTcpSocket *tcpSocket;
+int UserNum = 0;
 LogDlg::LogDlg(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LogDlg)
@@ -28,6 +30,7 @@ void LogDlg::on_pushButton_log_clicked()
     pa->type = LOG ^KEY;
 
     ma.num = ui->lineEdit_num->text().toInt();
+    UserNum = ma.num;
 
     QByteArray temp2 = ui->lineEdit_passwd->text().toLatin1();
     strcpy(ma.passwd ,temp2.data());
